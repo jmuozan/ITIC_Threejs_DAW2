@@ -1,6 +1,6 @@
 # Classe three.js
 
-
+![itic_logo](/Users/jorgemuyo/Desktop/three.js_workshop/DOCUMENTATION/IMG/itic_logo.png)
 
 
 .glTF
