@@ -1,10 +1,14 @@
 # Classe three.js
 
-![itic_logo](/Users/jorgemuyo/Desktop/three.js_workshop/DOCUMENTATION/IMG/itic_logo.png)
+Concept:
 
+Museum 
 
-.glTF
+## TO-DO
 
+- [ ] OBJ LOADER
+- [ ] OBJ + MTL
+- [ ] GLTF
 
 
 
@@ -27,3 +31,21 @@
 [cg Trader](https://www.cgtrader.com/)
 [Turbo Squid](https://www.turbosquid.com/)
 [sketchfab](https://sketchfab.com/)
+
+
+
+
+
+
+
+
+
+https://threedscans.com/uncategorized/relief-with-bulls-legs/
+
+https://threedscans.com/uncategorized/molding-of-the-central-part-of-east-lintel-of-prasat-krahom-depicting-vishnu-narasimha/
+
+https://threedscans.com/uncategorized/column-04/
+
+https://threedscans.com/lincoln/reconstructed/
+
+https://threedscans.com/vienna/eisbaer_und_seehund/
