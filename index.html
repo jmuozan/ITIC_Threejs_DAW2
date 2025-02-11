@@ -1,7 +1,221 @@
-<canvas id="c"></canvas>
-  <script  type="importmap">{
-	"imports": {
-		"three": "https://threejs.org/build/three.module.js",
-		"three/addons/": "https://threejs.org/examples/jsm/"
-	}
-}</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .left-side {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        .logo {
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .left-image {
+            width: 100%;
+            height: auto;
+            margin-top: 2rem;
+            object-fit: cover;
+            max-height: 70vh;
+        }
+
+        .right-side {
+            flex: 1.5;
+            position: relative;
+            background-color: #f5f5f5;
+            padding: 2rem 4rem 2rem 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        #viewer-container {
+            width: 90%;
+            height: 90%;
+            position: relative;
+        }
+
+        #error {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            color: red;
+            z-index: 1000;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-links a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .user-controls {
+            display: flex;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-links">
+            <a href="#">Items</a>
+            <a href="#">Brands</a>
+            <a href="#">L/Journal</a>
+            <a href="#">Creative Communication Labo</a>
+        </div>
+        <div class="user-controls">
+            <a href="#">My Page</a>
+            <a href="#">Cart</a>
+            <a href="#">Playground</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="left-side">
+            <div class="logo">El museu</div>
+            <img src="PAGE/IMG/Bizzarre helmet.jpg" alt="Bizarre helmet artwork" class="left-image">
+        </div>
+        <div class="right-side">
+            <div id="viewer-container">
+                <div id="error"></div>
+            </div>
+        </div>
+    </div>
+
+    <script async src="https://unpkg.com/es-module-shims"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.159.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.159.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+
+        // Setup
+        const container = document.getElementById('viewer-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth/container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setClearColor(0xf5f5f5, 1);
+        container.appendChild(renderer.domElement);
+
+        // Enhanced lighting setup
+        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+
+        // Front light
+        const frontLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        frontLight.position.set(0, 0, 5);
+        scene.add(frontLight);
+
+        // Back light
+        const backLight = new THREE.DirectionalLight(0xffffff, 0.6);
+        backLight.position.set(0, 0, -5);
+        scene.add(backLight);
+
+        // Left light
+        const leftLight = new THREE.DirectionalLight(0xffffff, 0.6);
+        leftLight.position.set(-5, 0, 0);
+        scene.add(leftLight);
+
+        // Right light
+        const rightLight = new THREE.DirectionalLight(0xffffff, 0.6);
+        rightLight.position.set(5, 0, 0);
+        scene.add(rightLight);
+
+        // Top light
+        const topLight = new THREE.DirectionalLight(0xffffff, 0.6);
+        topLight.position.set(0, 5, 0);
+        scene.add(topLight);
+
+        // Controls
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+
+        // Load model
+        new OBJLoader().load('PAGE/MODELS/HelmetMoustacheDecimated.OBJ', 
+            model => {
+                scene.add(model);
+                const box = new THREE.Box3().setFromObject(model);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+                
+                // Center the model
+                model.position.sub(center);
+                
+                // Move the model up by half its height
+                model.position.y += size.y / 2;
+                
+                // Flip the model upside down by rotating 180 degrees around X axis
+                model.rotation.x = Math.PI;
+                
+                camera.position.z = Math.max(...Object.values(size)) * 2;
+                controls.update();
+            },
+            undefined,
+            error => document.getElementById('error').textContent = 'Error loading model'
+        );
+
+        // Animation
+        (function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        })();
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            const container = document.getElementById('viewer-container');
+            camera.aspect = container.clientWidth/container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    </script>
+</body>
+</html>
