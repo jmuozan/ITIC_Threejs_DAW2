@@ -48,7 +48,7 @@
         .right-side {
             flex: 1.5;
             position: relative;
-            background-color: #f5f5f5;
+            background-color: #f0f0f0;
             padding: 2rem 4rem 2rem 2rem;
             display: flex;
             align-items: center;
@@ -102,17 +102,12 @@
             <a href="#">Repo</a>
             <a href="#">Playground</a>
         </div>
-        <!--<div class="user-controls">
-            <a href="#">My Page</a>
-            <a href="#">Cart</a>
-            <a href="#">Playground</a>
-        </div>-->
     </div>
 
     <div class="container">
         <div class="left-side">
             <div class="logo">El museu</div>
-            <img src="PAGE/IMG/Bizzarre helmet.jpg" alt="Bizarre helmet artwork" class="left-image">
+            <img src="PAGE/IMG/Bizzarre helmet.jpg" alt="Bizarre helmet" class="left-image">
         </div>
         <div class="right-side">
             <div id="viewer-container">
@@ -189,7 +184,7 @@
                 model.position.sub(center);
                 
                 // Move the model up by half its height
-                model.position.y += size.y / 2;
+                model.position.y += size.y * 1;
                 
                 // Flip the model upside down by rotating 180 degrees around X axis
                 model.rotation.x = Math.PI;
