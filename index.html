@@ -26,30 +26,52 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            overflow: hidden;
-        }
-
-        .logo {
-            writing-mode: vertical-lr;
-            transform: rotate(180deg);
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #333;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .left-image {
-            width: 100%;
-            height: auto;
+            width: 90%;
             margin-top: 2rem;
-            object-fit: cover;
+            object-fit: contain;
             max-height: 70vh;
+        }
+
+        .artifact-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            width: 90%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .artifact-info h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .artifact-info p {
+            color: #666;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .artifact-metadata {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
         }
 
         .right-side {
             flex: 1.5;
             position: relative;
             background-color: #f0f0f0;
-            padding: 2rem 4rem 2rem 2rem;
+            padding: 2rem;
             display: flex;
             align-items: center;
         }
@@ -76,7 +98,16 @@
             padding: 1rem;
             display: flex;
             justify-content: space-between;
+            align-items: center;
             z-index: 1000;
+            background-color: rgba(240, 240, 240, 0.9);
+        }
+
+        .header-logo {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+            margin-left: 1rem;
         }
 
         .header-links {
@@ -97,17 +128,26 @@
 </head>
 <body>
     <div class="header">
+        <div class="header-logo">El museu</div>
         <div class="header-links">
-            <a href="#">Home</a>
-            <a href="#">Repo</a>
+            <a href="https://jmuozan.github.io/three.js_workshop/">Home</a>
+            <a target="_blank" href="https://github.com/jmuozan/three.js_workshop">Repo</a>
             <a href="#">Playground</a>
         </div>
     </div>
 
     <div class="container">
         <div class="left-side">
-            <div class="logo">El museu</div>
             <img src="PAGE/IMG/Bizzarre helmet.jpg" alt="Bizarre helmet" class="left-image">
+            <div class="artifact-info">
+                <h2>Modernist Cavalry Helmet</h2>
+                <div class="artifact-metadata">
+                    <p><strong>Year:</strong> 1922</p>
+                    <p><strong>Artist:</strong> Salvador Dalí</p>
+                    <p><strong>Collection:</strong> El Museu Surrealista</p>
+                </div>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus tempora doloremque minus placeat nobis nesciunt ullam provident similique vero earum tenetur quidem illo itaque praesentium quo, inventore, quam, totam reprehenderit!</p>
+            </div>
         </div>
         <div class="right-side">
             <div id="viewer-container">
