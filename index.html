@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -31,19 +36,18 @@
         }
 
         .left-image {
-            width: 90%;
+            width: 80%;
             margin-top: 2rem;
             object-fit: contain;
             max-height: 70vh;
         }
 
         .artifact-info {
-            margin-top: 2rem;
+            margin-top: 1rem;
             padding: 1.5rem;
             background-color: white;
-            width: 90%;
+            width: 80%;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
         }
 
         .artifact-info h2 {
@@ -71,6 +75,7 @@
             background-color: #f0f0f0;
             padding: 2rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
         }
 
@@ -118,9 +123,47 @@
             text-decoration: none;
         }
 
-        .user-controls {
+        .material-controls {
+            margin-bottom: 1rem;
+            width: 90%;
             display: flex;
-            gap: 1rem;
+            justify-content: flex-start;
+            gap: 2rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .material-controls select {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .material-controls label {
+            display: flex;
+            align-items: center;
+            color: #333;
+            font-weight: 500;
+            gap: 0.5rem;
+        }
+
+        #color-picker {
+            width: 50px;
+            height: 30px;
+            padding: 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -144,10 +187,30 @@
                     <p><strong>Artist:</strong> Lorem Ipsum</p>
                     <p><strong>Collection:</strong> Lorem Ipsum</p>
                 </div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus tempora doloremque minus placeat nobis nesciunt ullam provident similique vero earum tenetur quidem illo itaque praesentium quo, inventore, quam, totam reprehenderit!</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. vero earum tenetur quidem illo itaque praesentium quo, inventore, quam, totam reprehenderit!</p>
             </div>
         </div>
         <div class="right-side">
+            <div class="material-controls">
+                <div class="control-group">
+                    <label>
+                        Material:
+                        <select id="material-select">
+                            <option value="standard">Standard</option>
+                            <option value="metallic">Metallic</option>
+                            <option value="plastic">Plastic</option>
+                            <option value="toon">Toon</option>
+                            <option value="wireframe">Wireframe</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label>
+                        Color:
+                        <input type="color" id="color-picker" value="#808080">
+                    </label>
+                </div>
+            </div>
             <div id="viewer-container">
                 <div id="error"></div>
             </div>
@@ -181,38 +244,66 @@
         // Enhanced lighting setup
         scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
-        // Front light
-        const frontLight = new THREE.DirectionalLight(0xffffff, 0.8);
-        frontLight.position.set(0, 0, 5);
-        scene.add(frontLight);
+        const lights = [
+            { position: [0, 0, 5], intensity: 0.8 },   // Front
+            { position: [0, 0, -5], intensity: 0.6 },  // Back
+            { position: [-5, 0, 0], intensity: 0.6 },  // Left
+            { position: [5, 0, 0], intensity: 0.6 },   // Right
+            { position: [0, 5, 0], intensity: 0.6 }    // Top
+        ];
 
-        // Back light
-        const backLight = new THREE.DirectionalLight(0xffffff, 0.6);
-        backLight.position.set(0, 0, -5);
-        scene.add(backLight);
-
-        // Left light
-        const leftLight = new THREE.DirectionalLight(0xffffff, 0.6);
-        leftLight.position.set(-5, 0, 0);
-        scene.add(leftLight);
-
-        // Right light
-        const rightLight = new THREE.DirectionalLight(0xffffff, 0.6);
-        rightLight.position.set(5, 0, 0);
-        scene.add(rightLight);
-
-        // Top light
-        const topLight = new THREE.DirectionalLight(0xffffff, 0.6);
-        topLight.position.set(0, 5, 0);
-        scene.add(topLight);
+        lights.forEach(light => {
+            const directionalLight = new THREE.DirectionalLight(0xffffff, light.intensity);
+            directionalLight.position.set(...light.position);
+            scene.add(directionalLight);
+        });
 
         // Controls
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
 
+        // Materials creator function
+        function createMaterials(color) {
+            return {
+                standard: new THREE.MeshStandardMaterial({
+                    color: color,
+                    roughness: 0.5,
+                    metalness: 0.5
+                }),
+                metallic: new THREE.MeshStandardMaterial({
+                    color: color,
+                    roughness: 0.2,
+                    metalness: 0.9
+                }),
+                plastic: new THREE.MeshPhongMaterial({
+                    color: color,
+                    shininess: 100,
+                    specular: 0x444444
+                }),
+                toon: new THREE.MeshToonMaterial({
+                    color: color
+                }),
+                wireframe: new THREE.MeshBasicMaterial({
+                    color: color,
+                    wireframe: true
+                })
+            };
+        }
+
+        let currentModel = null;
+        let materials = createMaterials(0x808080);
+        let currentMaterialType = 'standard';
+
         // Load model
         new OBJLoader().load('PAGE/MODELS/HelmetMoustacheDecimated.OBJ', 
             model => {
+                currentModel = model;
+                model.traverse(child => {
+                    if (child instanceof THREE.Mesh) {
+                        child.material = materials.standard;
+                    }
+                });
+                
                 scene.add(model);
                 const box = new THREE.Box3().setFromObject(model);
                 const center = box.getCenter(new THREE.Vector3());
@@ -233,6 +324,32 @@
             undefined,
             error => document.getElementById('error').textContent = 'Error loading model'
         );
+
+        // Material change handler
+        document.getElementById('material-select').addEventListener('change', (event) => {
+            if (currentModel) {
+                currentMaterialType = event.target.value;
+                const newMaterial = materials[currentMaterialType];
+                currentModel.traverse(child => {
+                    if (child instanceof THREE.Mesh) {
+                        child.material = newMaterial;
+                    }
+                });
+            }
+        });
+
+        // Color change handler
+        document.getElementById('color-picker').addEventListener('input', (event) => {
+            if (currentModel) {
+                const color = new THREE.Color(event.target.value);
+                materials = createMaterials(color);
+                currentModel.traverse(child => {
+                    if (child instanceof THREE.Mesh) {
+                        child.material = materials[currentMaterialType];
+                    }
+                });
+            }
+        });
 
         // Animation
         (function animate() {
