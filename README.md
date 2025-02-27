@@ -14,15 +14,11 @@ Al document [EXPLICACIÓ_CODI](EXPLICACIÓ_CODI.md) s'explica detalladament l'es
 
 ---
 
-<table>
-  <tr>
-    <td><img src="PAGE/IMG/LOGOS/logoITICBCN.png" height="40" /></td>
-    <td width="100"></td>
-    <td><img src="PAGE/IMG/LOGOS/logo_CEB.png" height="40" /></td>
-    <td width="100"></td>
-    <td><img src="PAGE/IMG/LOGOS/footer-logos-white.svg" height="40" /></td>
-  </tr>
-</table>
+<div style="display: flex; align-items: center;">
+  <img src="PAGE/IMG/LOGOS/logoITICBCN.png" height="40" style="margin-right: 100px;" />
+  <img src="PAGE/IMG/LOGOS/logo_CEB.png" height="40" style="margin-right: 100px;" />
+  <img src="PAGE/IMG/LOGOS/footer-logos-white.svg" height="40" />
+</div>
 
 *<!--*
 *https://threedscans.com/uncategorized/relief-with-bulls-legs/*
