@@ -492,7 +492,7 @@ container.appendChild(renderer.domElement);
 - Importem les biblioteques necessàries de Three.js:
   - `THREE`: Biblioteca principal
   - `OrbitControls`: Per rotació i zoom amb el ratolí
-  - `OBJLoader`: Per carregar models 3D en format OBJ
+  - `OBJLoader`: Per carregar models 3D en format `.obj` (Consultar [CONCEPTES_ESSENCIALS_3D.md](CONCEPTES_ESSENCIALS_3D) per entrendre millor formatsi propietats de la visualitazació tridimensional)
 - Configurem els components bàsics de Three.js:
   - `scene`: L'escena on s'afegeixen tots els objectes
   - `camera`: Una càmera de perspectiva amb paràmetres específics (FOV, aspect ratio, near plane, far plane)
@@ -502,15 +502,15 @@ container.appendChild(renderer.domElement);
 ### Configuració de Llums
 
 ```javascript
-// Enhanced lighting setup
+// llums
 scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
 const lights = [
-    { position: [0, 0, 5], intensity: 0.8 },   // Front
-    { position: [0, 0, -5], intensity: 0.6 },  // Back
-    { position: [-5, 0, 0], intensity: 0.6 },  // Left
-    { position: [5, 0, 0], intensity: 0.6 },   // Right
-    { position: [0, 5, 0], intensity: 0.6 }    // Top
+    { position: [0, 0, 5], intensity: 0.8 },   // Frontal
+    { position: [0, 0, -5], intensity: 0.6 },  // Darrerr
+    { position: [-5, 0, 0], intensity: 0.6 },  // Esquerra
+    { position: [5, 0, 0], intensity: 0.6 },   // Dreat
+    { position: [0, 5, 0], intensity: 0.6 }    // Sup
 ];
 
 lights.forEach(light => {
@@ -548,7 +548,7 @@ controls.enableDamping = true;
 ### Creació de Materials
 
 ```javascript
-// Materials creator function
+// Materials
 function createMaterials(color) {
     return {
         standard: new THREE.MeshStandardMaterial({
@@ -596,7 +596,7 @@ let currentMaterialType = 'standard';
 ### Càrrega del Model 3D
 
 ```javascript
-// Load model
+// Carregar el  model
 new OBJLoader().load('PAGE/MODELS/HelmetMoustacheDecimated.OBJ', 
     model => {
         currentModel = model;
@@ -611,13 +611,13 @@ new OBJLoader().load('PAGE/MODELS/HelmetMoustacheDecimated.OBJ',
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
         
-        // Center the model
+        // centrar
         model.position.sub(center);
         
-        // Move the model up by half its height
+        // Moure la meitat de la seua altura
         model.position.y += size.y * 1;
         
-        // Flip the model upside down by rotating 180 degrees around X axis
+        // rotal el model 180 graus al voltant de l'eix x (tot en radians)
         model.rotation.x = Math.PI;
         
         camera.position.z = Math.max(...Object.values(size)) * 2;
@@ -634,17 +634,17 @@ new OBJLoader().load('PAGE/MODELS/HelmetMoustacheDecimated.OBJ',
   1. L'assignem a la variable `currentModel`
   2. Apliquem el material estàndard a tots els elements de tipus Mesh
   3. Afegim el model a l'escena
-  4. Calculem la caixa delimitadora del model
+  4. Calculem la caixa delimitadora (Bounding box) del model
   5. Centrem el model restant la posició central de la caixa
   6. Movem el model cap amunt perquè la seva base estigui al centre
   7. Girem el model 180 graus al voltant de l'eix X per orientar-lo correctament
   8. Posicionem la càmera a una distància proporcional a la mida del model
-- Si hi ha un error en la càrrega, mostrem un missatge d'error
+- Si hi haguera un error en la càrrega, mostrem un missatge d'error
 
 ### Gestió d'Esdeveniments per als Controls
 
 ```javascript
-// Material change handler
+// Gestió per a canvi de material
 document.getElementById('material-select').addEventListener('change', (event) => {
     if (currentModel) {
         currentMaterialType = event.target.value;
@@ -657,7 +657,7 @@ document.getElementById('material-select').addEventListener('change', (event) =>
     }
 });
 
-// Color change handler
+// CGestió per canviar el color
 document.getElementById('color-picker').addEventListener('input', (event) => {
     if (currentModel) {
         const color = new THREE.Color(event.target.value);
@@ -685,14 +685,14 @@ document.getElementById('color-picker').addEventListener('input', (event) => {
 ### Animació i Gestió de Redimensionament
 
 ```javascript
-// Animation
+// Animació
 (function animate() {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
 })();
 
-// Handle resize
+// reize
 window.addEventListener('resize', () => {
     const container = document.getElementById('viewer-container');
     camera.aspect = container.clientWidth/container.clientHeight;
@@ -716,8 +716,6 @@ window.addEventListener('resize', () => {
 
 ## Integració i Flux de Dades
 
-Aquest projecte mostra un exemple excel·lent d'integració entre HTML, CSS i JavaScript per crear una aplicació web interactiva en 3D:
-
 1. **Estructura (HTML)**:
    - Defineix els elements de la interfície d'usuari
    - Proporciona els controls per a la interacció
@@ -738,12 +736,12 @@ Aquest projecte mostra un exemple excel·lent d'integració entre HTML, CSS i Ja
 ### Flux de dades:
 
 1. L'usuari interactua amb els controls (canvi de material o color)
-2. Els controladors d'esdeveniments JavaScript capturen aquestes interaccions
+2. Els controladors de JavaScript capturen aquestes interaccions
 3. S'actualitzen els materials del model 3D
 4. El bucle d'animació renderitza els canvis en temps real
 5. L'usuari veu instantàniament els efectes de les seves interaccions
 
-Aquest projecte demostra conceptes importants en Three.js:
+Conceptes importants en Three.js:
 - Configuració bàsica (escena, càmera, renderitzador)
 - Càrrega de models 3D
 - Iluminació avançada
@@ -751,9 +749,3 @@ Aquest projecte demostra conceptes importants en Three.js:
 - Interacció amb l'usuari
 - Controls de càmera
 - Animació i renderització en temps real
-
-També mostra bones pràctiques de desenvolupament com:
-- Separació de preocupacions (HTML/CSS/JS)
-- Gestió d'errors (missatges d'error en cas de problemes de càrrega)
-- Codi reutilitzable (funció de creació de materials)
-- Gestió del cicle de vida (neteja i redimensionament)

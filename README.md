@@ -25,7 +25,9 @@ Al document [EXPLICACIÓ_CODI](EXPLICACIÓ_CODI.md) s'explica detalladament l'es
 
 
 
-
+![](PAGE/IMG/LOGOS/logoITICBCN.png)
+![](PAGE/IMG/LOGOS/logo_CEB.png)
+![](PAGE/IMG/LOGOS/footer-logos-white.svg)
 
 
 
