@@ -1,16 +1,7 @@
 # Classe three.js
+Classe three.js Desenvolupament web en entorn client a DAW2
 
-Concept:
-
-Museum 
-
-## TO-DO
-
-- [ ] OBJ LOADER
-- [ ] OBJ + MTL
-- [ ] GLTF
-
-
+Al document [EXPLICACIÓ_CODI](EXPLICACIÓ_CODI.md) s'explica detalladament l'estructura i funcionament del codi del visor 3D creat amb Three.js que permet visualitzar i modificar un model 3D d'un casc.
 
 
 ## Bibliografia
@@ -26,7 +17,7 @@ Museum
 
 
 
-## Bancs de models
+## Bancs de models
 - [Threedscans](https://threedscans.com/)
 - [cg Trader](https://www.cgtrader.com/)
 - [Turbo Squid](https://www.turbosquid.com/)
