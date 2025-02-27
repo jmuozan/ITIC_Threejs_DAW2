@@ -15,9 +15,7 @@ Al document [EXPLICACIÓ_CODI](EXPLICACIÓ_CODI.md) s'explica detalladament l'es
 ---
 
 <div style="display: flex; align-items: center;">
-  <img src="PAGE/IMG/LOGOS/logoITICBCN.png" height="40" style="margin-right: 100px;" />
-  <img src="PAGE/IMG/LOGOS/logo_CEB.png" height="40" style="margin-right: 100px;" />
-  <img src="PAGE/IMG/LOGOS/footer-logos-white.svg" height="40" />
+  <img src="PAGE/IMG/LOGOS/logoITICBCN.png" height="40" style="margin-right: 100px;" /> <img src="PAGE/IMG/LOGOS/logo_CEB.png" height="40" style="margin-right: 100px;" /> <img src="PAGE/IMG/LOGOS/footer-logos-white.svg" height="40" />
 </div>
 
 *<!--*
