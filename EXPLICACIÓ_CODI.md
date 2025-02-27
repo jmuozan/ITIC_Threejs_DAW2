@@ -192,7 +192,7 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 
 ## Estils CSS
 
-El fitxer `styles.css` defineix l'aspecte visual de tots els elements de la pàgina.
+El fitxer `styles.css` definirà l'aspecte visual de tots els elements de la pàgina.
 
 ### Estils Bàsics i del Cos
 
@@ -297,7 +297,7 @@ body {
 ```
 
 **Explicació:**
-- La imatge del casc té una altura fixa i cobreix tot l'ample disponible
+- La imatge té una altura fixa i cobreix tot l'ample disponible
 - La secció d'informació té un fons blanc per a contrastar amb el fons gris general
 - Els textos tenen mides i colors diferents per a establir una jerarquia visual
 
@@ -365,9 +365,9 @@ body {
 - Les alertes d'error apareixen en vermell per sobre de tot
 - Els controls de material tenen un fons blanc amb una disposició horitzontal
 - S'utilitza flexbox per alinear els controls i els seus elements
-- Els controls tenen estils específics per a una aparença professional
+- Estils específics per els controls 
 
-### Estils de la Capçalera (Header)
+### Estils de la Capçalera (header)
 
 ```css
 .header {
@@ -405,7 +405,6 @@ body {
 
 **Explicació:**
 - La capçalera està fixada a la part superior de la pantalla
-- Té una ombra subtil per a donar efecte d'elevació
 - Utilitza flexbox per a col·locar el logotip a l'esquerra i els enllaços a la dreta
 - Els enllaços estan separats 2rem entre ells i no tenen subratllat
 
@@ -468,7 +467,7 @@ body {
 
 ---
 
-## Funcionalitat JavaScript amb Three.js
+## Funcionalitat JavaScript utilitzanf Three.js
 
 El fitxer `script.js` conté tota la lògica per a carregar i manipular el model 3D utilitzant Three.js.
 
