@@ -1,6 +1,4 @@
-# Documentació del Projecte Three.js: Visor 3D d'un Casc
-
-Aquest document explica en detall l'estructura i funcionament d'un visor 3D creat amb Three.js que permet visualitzar i modificar un model 3D d'un casc. El projecte està organitzat en tres arxius principals: HTML (estructura), CSS (estil) i JavaScript (funcionalitat).
+# Documentació del Projecte Museu3D
 
 ## Taula de Continguts
 
@@ -15,7 +13,7 @@ Aquest document explica en detall l'estructura i funcionament d'un visor 3D crea
 
 El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 
-### Capçalera (Head)
+### Capçalera (head)
 
 ```html
 <head>
@@ -30,10 +28,10 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 
 **Explicació:**
 - Connectem amb Google Fonts per carregar les fonts "Sora" i "Lora"
-- Importem la biblioteca Font Awesome per als icones socials
-- Enllacem el nostre fitxer CSS extern (`styles.css`)
+- Importem la biblioteca Font Awesome per a les icones de les xarxes socials
+- Enllacem el nostre fitxer CSS extern `styles.css`
 
-### Estructura Principal del Cos
+### Estructura Principal del Cos (body)
 
 ```html
 <body>
@@ -43,7 +41,7 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 
     <div class="container">
         <div class="left-side">
-            <!-- Informació i imatge de l'artefacte -->
+            <!-- Informació i imatge de la peça -->
         </div>
         <div class="right-side">
             <!-- Controls i visor 3D -->
@@ -60,15 +58,15 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 
 **Explicació:**
 - L'estructura es divideix en tres parts principals: capçalera, contenidor principal i peu de pàgina
-- El contenidor principal està dividit en dues parts: 
-  - La part esquerra (`left-side`) mostra una imatge i informació textual sobre l'artefacte
-  - La part dreta (`right-side`) conté el visor 3D i els controls per manipular el model
+- El contenidor principal `container` està dividit en dues parts: 
+  - La part esquerra `left-side` mostra una imatge i informació textual sobre l'artefacte
+  - La part dreta `right-side` conté el visor 3D i els controls per manipular el model
 
-### Capçalera (Header)
+### Capçalera (header)
 
 ```html
 <div class="header">
-    <div class="header-logo">El museu</div>
+    <div class="header-logo">El Museu 3D</div>
     <div class="header-links">
         <a href="https://jmuozan.github.io/three.js_workshop/">Home</a>
         <a target="_blank" href="https://github.com/jmuozan/three.js_workshop">Repo</a>
@@ -78,8 +76,7 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 ```
 
 **Explicació:**
-- Conté el logotip del museu i enllaços de navegació
-- Els enllaços proporcionen accés a la pàgina principal, al repositori de GitHub i a un "Playground" (encara no implementat)
+- Conté el "logotip" del museu i enllaços de navegació
 
 ### Part Esquerra - Informació de l'Artefacte
 
@@ -87,9 +84,9 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 <div class="left-side">
     <img src="PAGE/IMG/Bizzarre helmet.jpg" alt="Bizarre helmet" class="left-image">
     <div class="artifact-info">
-        <h2>Modernist Cavalry Helmet</h2>
+        <h2>Cavalry Helmet</h2>
         <div class="artifact-metadata">
-            <p><strong>Year:</strong> 1922</p>
+            <p><strong>Year:</strong> XXXX</p>
             <p><strong>Artist:</strong> Lorem Ipsum</p>
             <p><strong>Collection:</strong> Lorem Ipsum</p>
         </div>
@@ -99,9 +96,9 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 ```
 
 **Explicació:**
-- Mostra una imatge del casc
-- Proporciona metadata com el títol, any, artista i col·lecció
-- Inclou una breu descripció de l'artefacte
+- Mostrem la imatge
+- Afegim metadata com el títol, any, artista i col·lecció
+- Breu descripció de l'artefacte
 
 ### Part Dreta - Visor 3D i Controls
 
@@ -134,11 +131,11 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 ```
 
 **Explicació:**
-- Els controls permeten a l'usuari canviar el material i el color del model 3D
+- Controls per canviar el material i el color del model 3D
 - El selector de material ofereix 5 opcions diferents: Standard, Metallic, Plastic, Toon i Wireframe
 - El selector de color permet escollir qualsevol color per aplicar-lo al model
 - El contenidor `viewer-container` és on es renderitzarà el model 3D
-- Inclou un element per mostrar missatges d'error si hi ha problemes en carregar el model
+- S'inclou un element per mostrar missatges d'error si hi ha problemes en carregar el model
 
 ### Peu de Pàgina (Footer)
 
@@ -169,8 +166,7 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 ```
 
 **Explicació:**
-- Mostra logos institucionals
-- Proporciona enllaços a xarxes socials (GitHub, LinkedIn, Instagram, Twitter) amb ícones de Font Awesome
+- Logos institucionals + enllaços a xarxes socials (GitHub, LinkedIn, Instagram, Twitter) amb ícones de Font Awesome
 
 ### Scripts
 
@@ -190,7 +186,7 @@ El fitxer `index.html` defineix l'estructura bàsica de la pàgina web.
 **Explicació:**
 - `es-module-shims`: Proporciona compatibilitat per a navegadors que no suporten mapes d'importació de manera nativa
 - `importmap`: Defineix els mapes d'importació per carregar Three.js i els seus addons des de CDN
-- Finalment, carrega el nostre script JavaScript principal com a mòdul
+- Finalment, carreguem el nostre script JavaScript principal com a mòdul
 
 ---
 
