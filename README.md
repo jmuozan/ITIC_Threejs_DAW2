@@ -15,9 +15,9 @@ Al document [EXPLICACIÓ_CODI](EXPLICACIÓ_CODI.md) s'explica detalladament l'es
 ---
 
 <p align="center">
-  <img alt="Light" src="./PAGE/IMG/LOGOS/logoITICBCN.png" width="45%">
+  <img alt="Light" src="./PAGE/IMG/LOGOS/logoITICBCN.png" width="15%">
 &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="Dark" src="./PAGE/IMG/LOGOS/logo_CEB.png" width="45%">
+  <img alt="Dark" src="./PAGE/IMG/LOGOS/logo_CEB.png" width="15%">
 &nbsp; &nbsp; &nbsp; &nbsp;
   <img alt="Dark" src="./PAGE/IMG/LOGOS/footer-logos-white.svg" width="45%">
 </p>
