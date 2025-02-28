@@ -1,4 +1,5 @@
 # Classe three.js
+---
 Classe three.js Desenvolupament web en entorn client a DAW2
 Al document [EXPLICACIÓ_CODI](EXPLICACIÓ_CODI.md) s'explica detalladament l'estructura i funcionament del codi del visor 3D creat amb Three.js que permet visualitzar i modificar un model 3D d'un casc.
 ## Bibliografia
