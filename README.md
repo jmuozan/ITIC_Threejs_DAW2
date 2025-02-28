@@ -5,7 +5,7 @@ Al document [EXPLICACIÓ_CODI](DOCUMENTATION/READMES/EXPLICACIÓ_CODI_MAIN.md) s
 
 ![](./DOCUMENTATION/IMATGES_DOCUMENTACIÓ/IMATGES_WEB/web_base.gif)
 
-Pots consultar [ACÍ](jmuozan.github.io/ITIC_Threejs_DAW2) la web.
+Pots consultar [ACÍ](https://jmuozan.github.io/ITIC_Threejs_DAW2) la web.
 
 Per entendre el conceptes bàsics de la representació tridimensional pot llegir el document [CONCEPTES ESSENCIALS 3D](DOCUMENTATION/READMES/CONCEPTES_ESSENCIALS_3D.md) 
 
