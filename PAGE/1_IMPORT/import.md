@@ -1,29 +1,43 @@
-# Three.js Import Example
+# Exemple d'Importació amb Three.js
 
-This example demonstrates how to use Three.js to import and display 3D models in `.obj` format.
+Aquest exemple mostra com utilitzar Three.js per importar i visualitzar models 3D en format `.obj`.
 
-## Files
+## Estructura del Codi
 
-- `import.html`: The main HTML file that sets up the page and includes the necessary scripts.
-- `import.js`: The JavaScript file that initializes the Three.js scene and handles file imports.
+### `import.html`
+Aquest fitxer defineix l'estructura bàsica de la pàgina web:
+- Inclou els scripts necessaris per carregar Three.js i els seus addons.
+- Conté un element `<input>` per seleccionar fitxers `.obj`.
+- Configura un contenidor `<div>` per al renderitzat de l'escena 3D.
 
-## How to Use
+### `import.js`
+Aquest fitxer conté tota la lògica per inicialitzar i gestionar l'escena 3D:
 
-1. Open `import.html` in a web browser.
-2. Use the file input at the top-left corner to select a `.obj` file from your computer.
-3. The 3D model will be displayed in the viewer.
+1. **Importacions**:
+   - `THREE`: Biblioteca principal de Three.js.
+   - `OBJLoader`: Per carregar models 3D en format `.obj`.
+   - `OrbitControls`: Per permetre la navegació interactiva amb la càmera.
 
-## Key Features
+2. **Configuració Inicial**:
+   - Es crea una escena (`scene`), una càmera (`camera`) i un renderitzador (`renderer`).
+   - Es defineixen llums bàsics: una llum ambiental i una llum direccional.
 
-- Simple and clear setup for teaching purposes.
-- Supports importing `.obj` files.
-- Basic lighting and camera setup for visualization.
+3. **Gestió de Fitxers**:
+   - Es configura un gestor d'esdeveniments per al `<input>` de fitxers.
+   - Quan es selecciona un fitxer `.obj`, es llegeix el contingut i es carrega a l'escena utilitzant `OBJLoader`.
 
-## Requirements
+4. **Centrar el Model**:
+   - Es calcula la caixa delimitadora (`BoundingBox`) del model per centrar-lo a l'escena.
+   - Es posiciona la càmera per mirar directament al model.
 
-- A modern web browser with support for ES modules.
+5. **Controls de Navegació**:
+   - S'afegeixen controls orbitals (`OrbitControls`) per permetre rotar, fer zoom i desplaçar la vista.
 
-## Notes
+6. **Animació**:
+   - Es crea un bucle d'animació amb `requestAnimationFrame` per renderitzar contínuament l'escena i actualitzar els controls.
 
-- This example uses the `OBJLoader` from the Three.js library to parse `.obj` files.
-- Ensure the `.obj` file is properly formatted for successful loading.
+7. **Gestió de Redimensionament**:
+   - Es configura un gestor d'esdeveniments per ajustar la mida del renderitzador i l'aspecte de la càmera quan es redimensiona la finestra del navegador.
+
+## Objectiu
+Aquest exemple està dissenyat per ensenyar conceptes bàsics de Three.js, com ara la configuració d'una escena, la càrrega de models 3D i la interacció amb l'usuari.

@@ -1,5 +1,5 @@
 # Classe three.js
----
+
 Classe three.js Desenvolupament web en entorn client a DAW2
 Al document [EXPLICACIÓ_CODI](DOCUMENTATION/READMES/EXPLICACIÓ_CODI_MAIN.md) s'explica detalladament l'estructura i funcionament del codi de la web principal, un visor 3D creat amb Three.js que permet visualitzar i modificar parcialment un model 3D d'un casc.
 
@@ -27,7 +27,6 @@ Pàgines on podeu descarregar models 3d gratuitament. (Mireu el tipus de llicenc
 
 
 
----
 
 <p align="left">
   <img alt="Light" src="./PAGE/IMG/LOGOS/logoITICBCN.png" width="15%">
