@@ -39,5 +39,3 @@ Aquest fitxer conté tota la lògica per inicialitzar i gestionar l'escena 3D:
 7. **Gestió de Redimensionament**:
    - Es configura un gestor d'esdeveniments per ajustar la mida del renderitzador i l'aspecte de la càmera quan es redimensiona la finestra del navegador.
 
-## Objectiu
-Aquest exemple està dissenyat per ensenyar conceptes bàsics de Three.js, com ara la configuració d'una escena, la càrrega de models 3D i la interacció amb l'usuari.
