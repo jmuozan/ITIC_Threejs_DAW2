@@ -3,20 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple OBJ Viewer</title>
-    <link rel="stylesheet" href="import.css">
+    <title>Three.js Import Example</title>
+    <script async src="https://unpkg.com/es-module-shims"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.159.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.159.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="import.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #file-input {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
-    <div id="container"></div>
-    <div id="info">OBJ File Viewer</div>
-    <div id="controls">
-        <input type="file" id="file-input" accept=".obj">
-        <button id="load-button">Load OBJ File</button>
-        <button id="reset-button">Reset Camera</button>
-    </div>
-
-    <!-- Three.js from CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.153.0/three.min.js"></script>
-    <script src="import.js"></script>
+    <input type="file" id="file-input" accept=".obj" />
+    <div id="viewer-container"></div>
 </body>
 </html>
