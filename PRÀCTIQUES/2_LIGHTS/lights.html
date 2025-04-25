@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemple de Llums amb Three.js</title>
+    <script async src="https://unpkg.com/es-module-shims"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.159.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.159.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="lights.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Sora', sans-serif; /* Match typography from index.html */
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <label><input type="checkbox" id="ambient-light" checked> Llum Ambiental</label><br>
+        <label><input type="checkbox" id="directional-light" checked> Llum Direccional</label><br>
+        <label><input type="checkbox" id="point-light" checked> Llum Puntual</label>
+    </div>
+    <div id="viewer-container"></div>
+</body>
+</html>
