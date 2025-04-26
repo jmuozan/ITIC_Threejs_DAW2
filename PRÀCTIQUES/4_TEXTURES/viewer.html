@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Jordan 3D Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f8f8f8;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: #333;
+        }
+        #info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Loading model...</div>
+    <div id="info">Mouse: Left click + drag to rotate | Right click + drag to pan | Scroll to zoom</div>
+    
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
+        import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+        
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xf8f8f8);
+        
+        // Camera setup
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+        
+        // Renderer setup
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.body.appendChild(renderer.domElement);
+        
+        // Lighting setup
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        
+        const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight1.position.set(1, 1, 1);
+        scene.add(directionalLight1);
+        
+        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+        directionalLight2.position.set(-1, -1, -1);
+        scene.add(directionalLight2);
+        
+        // OrbitControls setup
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        
+        // Model loading
+        function loadModel() {
+            // Create material loader
+            const mtlLoader = new MTLLoader();
+            mtlLoader.setPath('MODEL/');
+            mtlLoader.load('air jordan.mtl', function(materials) {
+                materials.preload();
+                
+                // Create object loader
+                const objLoader = new OBJLoader();
+                objLoader.setMaterials(materials);
+                objLoader.setPath('MODEL/');
+                objLoader.load('air jordan.obj', function(object) {
+                    // Center the model
+                    const box = new THREE.Box3().setFromObject(object);
+                    const center = box.getCenter(new THREE.Vector3());
+                    const size = box.getSize(new THREE.Vector3());
+                    
+                    // Center the model geometrically
+                    object.position.x = -center.x;
+                    object.position.y = -center.y;
+                    object.position.z = -center.z;
+                    
+                    // Check if texture exists in the materials
+                    object.traverse(function(child) {
+                        if (child.isMesh) {
+                            // If material exists but no texture is applied
+                            if (child.material && !child.material.map) {
+                                // Create and apply texture
+                                const textureLoader = new THREE.TextureLoader();
+                                const texture = textureLoader.load('MODEL/air jordan_DefaultMaterial_BaseColor.png');
+                                child.material.map = texture;
+                                child.material.needsUpdate = true;
+                            }
+                        }
+                    });
+                    
+                    // Add model to scene
+                    scene.add(object);
+                    
+                    // Set camera position based on model size
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    const fov = camera.fov * (Math.PI / 180);
+                    let cameraZ = Math.abs(maxDim / Math.sin(fov / 2));
+                    cameraZ *= 1.5; // Adjust multiplier for better view
+                    camera.position.z = cameraZ;
+                    
+                    // Update the orbital controls
+                    const minDistance = maxDim / 2;
+                    const maxDistance = maxDim * 3;
+                    controls.minDistance = minDistance;
+                    controls.maxDistance = maxDistance;
+                    controls.update();
+                    
+                    // Hide loading indicator
+                    document.getElementById('loading').style.display = 'none';
+                }, 
+                // Progress callback
+                function(xhr) {
+                    const percent = Math.round((xhr.loaded / xhr.total) * 100);
+                    document.getElementById('loading').textContent = `Loading model: ${percent}%`;
+                },
+                // Error callback
+                function(error) {
+                    console.error('Error loading model:', error);
+                    document.getElementById('loading').textContent = 'Error loading model. Check console for details.';
+                });
+            }, 
+            // MTL progress callback is not typically available
+            undefined,
+            // MTL error callback
+            function(error) {
+                console.error('Error loading materials:', error);
+                document.getElementById('loading').textContent = 'Error loading materials. Attempting to load model without materials...';
+                
+                // Try loading the model without materials as fallback
+                const objLoader = new OBJLoader();
+                objLoader.setPath('MODEL/');
+                objLoader.load('air jordan.obj', function(object) {
+                    // Center the model
+                    const box = new THREE.Box3().setFromObject(object);
+                    const center = box.getCenter(new THREE.Vector3());
+                    
+                    // Center the model geometrically
+                    object.position.x = -center.x;
+                    object.position.y = -center.y;
+                    object.position.z = -center.z;
+                    
+                    // Try to apply texture directly
+                    object.traverse(function(child) {
+                        if (child.isMesh) {
+                            // Create a standard material
+                            const material = new THREE.MeshStandardMaterial({
+                                color: 0xffffff,
+                                roughness: 0.5,
+                                metalness: 0.1
+                            });
+                            
+                            // Apply texture if available
+                            const textureLoader = new THREE.TextureLoader();
+                            textureLoader.load('MODEL/air jordan_DefaultMaterial_BaseColor.png', 
+                                function(texture) {
+                                    material.map = texture;
+                                    material.needsUpdate = true;
+                                    child.material = material;
+                                },
+                                undefined,
+                                function(err) {
+                                    console.error('Error loading texture:', err);
+                                }
+                            );
+                            
+                            child.material = material;
+                        }
+                    });
+                    
+                    scene.add(object);
+                    document.getElementById('loading').style.display = 'none';
+                },
+                // Progress callback
+                function(xhr) {
+                    const percent = Math.round((xhr.loaded / xhr.total) * 100);
+                    document.getElementById('loading').textContent = `Loading model without materials: ${percent}%`;
+                },
+                // Error callback
+                function(error) {
+                    console.error('Error loading model:', error);
+                    document.getElementById('loading').textContent = 'Failed to load model. Check file paths and try again.';
+                });
+            });
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        
+        // Start loading and animation
+        loadModel();
+        animate();
+    </script>
+</body>
+</html>
