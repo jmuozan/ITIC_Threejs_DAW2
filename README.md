@@ -1,6 +1,6 @@
 # Classe three.js
 
-## Què és Three.js? (Català)
+## Què és Three.js?
 Three.js és una biblioteca JavaScript que facilita la creació i visualització d'escenes 3D en el navegador web utilitzant WebGL. Permet crear gràfics interactius, animacions i visualitzacions 3D sense necessitat de coneixements avançats de programació gràfica. Amb Three.js pots afegir objectes, llums, càmeres i materials a una escena, i controlar la seva aparença i comportament de manera senzilla i potent.
 
 ## PRÀCTIQUES Three.js
@@ -29,28 +29,34 @@ A continuació trobaràs exemples pràctics per entendre i experimentar amb els 
 
 ---
 
-Al document [EXPLICACIÓ_CODI](DOCUMENTATION/READMES/EXPLICACIÓ_CODI_MAIN.md) s'explica detalladament l'estructura i funcionament del codi de la web principal, un visor 3D creat amb Three.js que permet visualitzar i modificar parcialment un model 3D d'un casc.
+## Recursos i Referències
 
-![](./DOCUMENTATION/IMATGES_DOCUMENTACIÓ/IMATGES_WEB/web_base.gif)
+### Documentació i Estructura del Projecte
+- Consulta la [Documentació del Codi Principal](DOCUMENTATION/READMES/EXPLICACIÓ_CODI_MAIN.md) per entendre en detall l'estructura i el funcionament del visor 3D desenvolupat amb Three.js. Aquest visor permet visualitzar i modificar parcialment un model 3D d'un casc.
 
-Pots consultar [ACÍ](https://jmuozan.github.io/ITIC_Threejs_DAW2) la web.
+<p align="center">
+  <img src="./DOCUMENTATION/IMATGES_DOCUMENTACIÓ/IMATGES_WEB/web_base.gif" alt="Visor 3D Three.js" width="60%">
+</p>
 
-Per entendre el conceptes bàsics de la representació tridimensional pot llegir el document [CONCEPTES ESSENCIALS 3D](DOCUMENTATION/READMES/CONCEPTES_ESSENCIALS_3D.md) 
+- Pots accedir a la web en funcionament [aquí](https://jmuozan.github.io/ITIC_Threejs_DAW2).
+- Per a una introducció als conceptes bàsics de la representació tridimensional, consulta el document [CONCEPTES ESSENCIALS 3D](DOCUMENTATION/READMES/CONCEPTES_ESSENCIALS_3D.md).
+- També disposes d'exemples pràctics d'ús de Three.js a la web.
 
-També disposes de exemples bàsics d'ús de Three.js a la web.
+---
 
-## Bibliografia
-- [three.js](https://threejs.org/)
-- [Blender](https://www.blender.org/)
-## Enllaços d'interès
-- [mrdoob](https://github.com/mrdoob)
+### Bibliografia Recomanada
+- [Three.js (Web oficial)](https://threejs.org/)
+- [Blender (Eina de modelatge 3D)](https://www.blender.org/)
 
-## Bancs de models
-Pàgines on podeu descarregar models 3d gratuitament. (Mireu el tipus de llicencia associada a cada un del models, pot ser vos demanen citar l'autor)
+### Enllaços d'Interès
+- [mrdoob (Creador de Three.js)](https://github.com/mrdoob)
+
+### Bancs de Models 3D Gratuïts
+Pots descarregar models 3D gratuïtament a les següents pàgines (revisa sempre la llicència i cita l'autor si és necessari):
 - [Threedscans](https://threedscans.com/)
 - [cg Trader](https://www.cgtrader.com/)
 - [Turbo Squid](https://www.turbosquid.com/)
-- [sketchfab](https://sketchfab.com/)
+- [Sketchfab](https://sketchfab.com/)
 
 
 
