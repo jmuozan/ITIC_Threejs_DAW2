@@ -3,6 +3,8 @@
 ## Què és Three.js?
 Three.js és una biblioteca JavaScript que facilita la creació i visualització d'escenes 3D en el navegador web utilitzant WebGL. Permet crear gràfics interactius, animacions i visualitzacions 3D sense necessitat de coneixements avançats de programació gràfica. Amb Three.js pots afegir objectes, llums, càmeres i materials a una escena, i controlar la seva aparença i comportament de manera senzilla i potent.
 
+➡️ [Consulta aquí l'estructura bàsica d'un projecte Three.js per a principiants](DOCUMENTATION/READMES/ESTRUCTURA_BASICA_THREEJS.md)
+
 ## PRÀCTIQUES Three.js
 A continuació trobaràs exemples pràctics per entendre i experimentar amb els conceptes bàsics de Three.js. Cada pràctica inclou fitxers HTML, JS i una explicació en format MD.
 
