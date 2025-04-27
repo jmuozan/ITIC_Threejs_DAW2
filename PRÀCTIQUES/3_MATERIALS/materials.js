@@ -1,36 +1,41 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-// Configuració inicial
+// Contenidor del visor
 const container = document.getElementById('viewer-container');
+
+// Escena principal
 const scene = new THREE.Scene();
+
+// Càmera de perspectiva
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+// Renderitzador WebGL
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild(renderer.domElement);
 
-// Afegir un cilindre bàsic
+// Afegim un cilindre per provar diferents materials
 const geometry = new THREE.CylinderGeometry(1, 1, 2, 32);
 let material = new THREE.MeshStandardMaterial({ color: 0x0077ff, metalness: 1, roughness: 0 });
 const cylinder = new THREE.Mesh(geometry, material);
 scene.add(cylinder);
 
-// Configuració de llums
+// Llum ambiental i direccional per veure els materials
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
-
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
 directionalLight.position.set(5, 5, 5);
 scene.add(directionalLight);
 
-// Controls orbitals
+// Controls d'òrbita per moure la càmera
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 
-// Posicionar la càmera
+// Posició inicial de la càmera
 camera.position.z = 5;
 
-// Funció per canviar el material
+// Funció per canviar el material segons el tipus seleccionat
 function updateMaterial(type) {
     switch (type) {
         case 'metallic':
@@ -46,7 +51,7 @@ function updateMaterial(type) {
     cylinder.material = material;
 }
 
-// Gestió d'esdeveniments per canviar materials
+// Escolta el canvi de material des dels radio buttons
 const materialRadios = document.getElementsByName('material');
 materialRadios.forEach(radio => {
     radio.addEventListener('change', (event) => {
@@ -54,7 +59,7 @@ materialRadios.forEach(radio => {
     });
 });
 
-// Animació
+// Bucle d'animació
 function animate() {
     requestAnimationFrame(animate);
     controls.update();
@@ -63,7 +68,7 @@ function animate() {
 
 animate();
 
-// Ajustar el renderitzador en redimensionar la finestra
+// Ajustar aspect ratio i mida del renderitzador si la finestra canvia
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();

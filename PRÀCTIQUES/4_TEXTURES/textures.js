@@ -3,38 +3,36 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 
-// Scene setup
+// Escena i fons clar
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xf8f8f8);
 
-// Camera setup
+// Càmera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 5;
 
-// Renderer setup
+// Renderitzador
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
 
-// Lighting setup
+// Llum ambiental i direccional
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
-
 const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
 directionalLight1.position.set(1, 1, 1);
 scene.add(directionalLight1);
-
 const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
 directionalLight2.position.set(-1, -1, -1);
 scene.add(directionalLight2);
 
-// OrbitControls setup
+// Controls d'òrbita
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
-// Model loading
+// Carrega el model OBJ amb MTL i textures. Si falla, carrega sense materials.
 function loadModel() {
     const mtlLoader = new MTLLoader();
     mtlLoader.setPath('MODEL/');
@@ -43,19 +41,20 @@ function loadModel() {
         wrap: THREE.RepeatWrapping,
         normalizeRGB: true
     });
-
     mtlLoader.load('air jordan.mtl', function(materials) {
         materials.preload();
         const objLoader = new OBJLoader();
         objLoader.setMaterials(materials);
         objLoader.setPath('MODEL/');
         objLoader.load('air jordan.obj', function(object) {
+            // Centra el model
             const box = new THREE.Box3().setFromObject(object);
             const center = box.getCenter(new THREE.Vector3());
             const size = box.getSize(new THREE.Vector3());
             object.position.x = -center.x;
             object.position.y = -center.y;
             object.position.z = -center.z;
+            // Aplica textures a cada mesh
             object.traverse(function(child) {
                 if (child.isMesh) {
                     child.geometry.computeVertexNormals();
@@ -92,6 +91,7 @@ function loadModel() {
                 }
             });
             scene.add(object);
+            // Ajusta càmera i controls segons la mida del model
             const maxDim = Math.max(size.x, size.y, size.z);
             const fov = camera.fov * (Math.PI / 180);
             let cameraZ = Math.abs(maxDim / Math.sin(fov / 2));
@@ -104,6 +104,7 @@ function loadModel() {
             controls.update();
             document.getElementById('loading').style.display = 'none';
         }, function(xhr) {
+            // Mostra el progrés de càrrega
             const percent = Math.round((xhr.loaded / xhr.total) * 100);
             document.getElementById('loading').textContent = `Loading model: ${percent}%`;
         }, function(error) {
@@ -116,6 +117,7 @@ function loadModel() {
     });
 }
 
+// Si falla la càrrega de materials, carrega el model amb un material bàsic i textura difusa
 function tryLoadingWithoutMaterials() {
     const objLoader = new OBJLoader();
     objLoader.setPath('MODEL/');
@@ -144,6 +146,7 @@ function tryLoadingWithoutMaterials() {
             }
         });
         scene.add(object);
+        // Ajusta càmera i controls
         const maxDim = Math.max(size.x, size.y, size.z);
         const fov = camera.fov * (Math.PI / 180);
         let cameraZ = Math.abs(maxDim / Math.sin(fov / 2));
@@ -163,17 +166,20 @@ function tryLoadingWithoutMaterials() {
     });
 }
 
+// Ajusta la càmera i el renderitzador si la finestra canvia de mida
 window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+// Bucle d'animació
 function animate() {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
 }
 
+// Inicia la càrrega i l'animació
 loadModel();
 animate();
