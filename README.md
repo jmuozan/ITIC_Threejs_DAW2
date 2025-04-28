@@ -3,7 +3,7 @@
 ## Què és Three.js?
 Three.js és una biblioteca JavaScript que facilita la creació i visualització d'escenes 3D en el navegador web utilitzant WebGL. Permet crear gràfics interactius, animacions i visualitzacions 3D sense necessitat de coneixements avançats de programació gràfica. Amb Three.js pots afegir objectes, llums, càmeres i materials a una escena, i controlar la seva aparença i comportament de manera senzilla i potent.
 
-➡️ [Consulta aquí l'estructura bàsica d'un projecte Three.js per a principiants](DOCUMENTATION/READMES/ESTRUCTURA_BASICA_THREEJS.md)
+➡️ [Consulta aquí l'estructura bàsica d'un projecte Three.js](DOCUMENTACIÓ/READMES/ESTRUCTURA_BASICA_THREEJS.md)
 
 ## PRÀCTIQUES Three.js
 A continuació trobaràs exemples pràctics per entendre i experimentar amb els conceptes bàsics de Three.js. Cada pràctica inclou fitxers HTML, JS i una explicació en format MD.
@@ -34,10 +34,10 @@ A continuació trobaràs exemples pràctics per entendre i experimentar amb els 
 ## Recursos i Referències
 
 ### Documentació i Estructura del Projecte
-- Consulta la [Documentació del Codi Principal](DOCUMENTATION/READMES/EXPLICACIÓ_CODI_MAIN.md) per entendre en detall l'estructura i el funcionament del visor 3D desenvolupat amb Three.js. Aquest visor permet visualitzar i modificar parcialment un model 3D d'un casc.
+- Consulta la [Documentació del Codi Principal](DOCUMENTACIÓ/READMES/EXPLICACIÓ_CODI_MAIN.md) per entendre en detall l'estructura i el funcionament del visor 3D desenvolupat amb Three.js. Aquest visor permet visualitzar i modificar parcialment un model 3D d'un casc.
 
 <p align="center">
-  <img src="./DOCUMENTATION/IMATGES_DOCUMENTACIÓ/IMATGES_WEB/web_base.gif" alt="Visor 3D Three.js" width="60%">
+  <img src="./DOCUMENTACIÓ/IMATGES_DOCUMENTACIÓ/IMATGES_WEB/web_base.gif" alt="Visor 3D Three.js" width="60%">
 </p>
 
 - Pots accedir a la web en funcionament [aquí](https://jmuozan.github.io/ITIC_Threejs_DAW2).
@@ -49,8 +49,6 @@ A continuació trobaràs exemples pràctics per entendre i experimentar amb els 
 ### Bibliografia Recomanada
 - [Three.js (Web oficial)](https://threejs.org/)
 - [Blender (Eina de modelatge 3D)](https://www.blender.org/)
-
-### Enllaços d'Interès
 - [mrdoob (Creador de Three.js)](https://github.com/mrdoob)
 
 ### Bancs de Models 3D Gratuïts
