@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three.js Import Example</title>
+    <title>Importació bàsica Three.js</title>
+    <!-- Incloem Three.js i els seus addons amb importmap -->
     <script async src="https://unpkg.com/es-module-shims"></script>
     <script type="importmap">
     {
@@ -13,22 +14,18 @@
         }
     }
     </script>
-    <script type="module" src="import.js"></script>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-        #file-input {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 10;
-        }
+        body { margin: 0; overflow: hidden; }
+        #file-input { position: absolute; top: 10px; left: 10px; z-index: 10; }
+        #viewer-container { width: 100vw; height: 100vh; }
     </style>
 </head>
 <body>
+    <!-- Input per pujar un fitxer OBJ -->
     <input type="file" id="file-input" accept=".obj" />
+    <!-- Contenidor on es mostrarà el visor 3D -->
     <div id="viewer-container"></div>
+    <!-- Script principal Three.js -->
+    <script type="module" src="import.js"></script>
 </body>
 </html>

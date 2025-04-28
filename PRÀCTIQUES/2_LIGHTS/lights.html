@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemple de Llums amb Three.js</title>
+    <title>Llums bàsics Three.js</title>
+    <!-- Importem Three.js i OrbitControls amb importmap -->
     <script async src="https://unpkg.com/es-module-shims"></script>
     <script type="importmap">
     {
@@ -13,30 +14,21 @@
         }
     }
     </script>
-    <script type="module" src="lights.js"></script>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-        #controls {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-            font-family: 'Sora', sans-serif; /* Match typography from index.html */
-        }
+        body { margin: 0; overflow: hidden; }
+        #controls { position: absolute; top: 10px; left: 10px; z-index: 10; background: rgba(255,255,255,0.8); padding: 10px; border-radius: 5px; }
+        #viewer-container { width: 100vw; height: 100vh; }
     </style>
 </head>
 <body>
+    <!-- Controls per activar/desactivar llums -->
     <div id="controls">
         <label><input type="checkbox" id="ambient-light" checked> Llum Ambiental</label><br>
-        <label><input type="checkbox" id="directional-light" checked> Llum Direccional</label><br>
-        <label><input type="checkbox" id="point-light" checked> Llum Puntual</label>
+        <label><input type="checkbox" id="directional-light" checked> Llum Direccional</label>
     </div>
+    <!-- Contenidor per al visor 3D -->
     <div id="viewer-container"></div>
+    <!-- Script principal Three.js -->
+    <script type="module" src="lights.js"></script>
 </body>
 </html>

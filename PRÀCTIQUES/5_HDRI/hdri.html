@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemple HDRI amb Three.js</title>
+    <title>HDRI bàsic Three.js</title>
+    <!-- Importem Google Fonts per coherència visual -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <!-- Importem Three.js, OrbitControls i EXRLoader amb importmap -->
     <script async src="https://unpkg.com/es-module-shims"></script>
     <script type="importmap">
     {
@@ -14,10 +20,11 @@
     }
     </script>
     <style>
-        body { margin: 0; overflow: hidden; background: #222; }
+        body { margin: 0; overflow: hidden; background: #222; font-family: 'Sora', 'Lora', Arial, sans-serif; }
     </style>
 </head>
 <body>
+    <!-- El visor 3D es mostrarà aquí -->
     <script type="module" src="hdri.js"></script>
 </body>
 </html>

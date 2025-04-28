@@ -1,22 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Jordan 3D Viewer</title>
+    <title>Exemple de Textures amb Three.js</title>
+    <!-- Importem Three.js, OrbitControls, OBJLoader i MTLLoader amb importmap -->
     <link rel="stylesheet" href="textures.css">
+    <script async src="https://unpkg.com/es-module-shims"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
+        }
+    }
+    </script>
 </head>
 <body>
-    <div id="loading">Loading model...</div>
-    <div id="info">Mouse: Left click + drag to rotate | Right click + drag to pan | Scroll to zoom</div>
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
-            }
-        }
-    </script>
+    <!-- Missatge de càrrega i instruccions d'ús -->
+    <div id="loading">Carregant model...</div>
+    <div id="info">Ratolí: Clic esquerre per rotar | Clic dret per desplaçar | Scroll per fer zoom</div>
+    <!-- Script principal Three.js -->
     <script type="module" src="textures.js"></script>
 </body>
 </html>
