@@ -41,7 +41,7 @@ A continuació trobaràs exemples pràctics per entendre i experimentar amb els 
 </p>
 
 - Pots accedir a la web en funcionament [aquí](https://jmuozan.github.io/ITIC_Threejs_DAW2).
-- Per a una introducció als conceptes bàsics de la representació tridimensional, consulta el document [CONCEPTES ESSENCIALS 3D](DOCUMENTATION/READMES/CONCEPTES_ESSENCIALS_3D.md).
+- Per a una introducció als conceptes bàsics de la representació tridimensional, consulta el document [CONCEPTES ESSENCIALS 3D](DOCUMENTACIÓ/READMES/CONCEPTES_ESSENCIALS_3D.md).
 - També disposes d'exemples pràctics d'ús de Three.js a la web.
 
 ---
