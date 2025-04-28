@@ -37,7 +37,7 @@ A continuació trobaràs exemples pràctics per entendre i experimentar amb els 
 - Consulta la [Documentació del Codi Principal](DOCUMENTACIÓ/READMES/EXPLICACIÓ_CODI_MAIN.md) per entendre en detall l'estructura i el funcionament del visor 3D desenvolupat amb Three.js. Aquest visor permet visualitzar i modificar parcialment un model 3D d'un casc.
 
 <p align="center">
-  <img src="./DOCUMENTACIÓ/IMATGES_DOCUMENTACIÓ/IMATGES_WEB/web_base.gif" alt="Visor 3D Three.js" width="60%">
+  <img src="./DOCUMENTACIÓ/IMATGES_DOCUMENTACIÓ/IMATGES_WEB/web_base.gif" alt="Visor 3D Three.js" width="100%">
 </p>
 
 - Pots accedir a la web en funcionament [aquí](https://jmuozan.github.io/ITIC_Threejs_DAW2).
