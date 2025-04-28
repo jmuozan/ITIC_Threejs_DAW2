@@ -65,7 +65,7 @@ let materials = createMaterials(0x808080);
 let currentMaterialType = 'standard';
 
 // Load model
-new OBJLoader().load('PAGE/MODELS/HelmetMoustacheDecimated.OBJ', 
+new OBJLoader().load('./PAGE/MODELS/HelmetMoustacheDecimated.OBJ', 
     model => {
         currentModel = model;
         model.traverse(child => {
