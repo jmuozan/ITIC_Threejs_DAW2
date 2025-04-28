@@ -85,8 +85,8 @@ new OBJLoader().load('PAGE/MODELS/HelmetMoustacheDecimated.OBJ',
         // Move the model up by half its height
         model.position.y += size.y * 1;
         
-        // Flip the model upside down by rotating 180 degrees around X axis
-        model.rotation.x = Math.PI;
+        // Rotate the model 90 degrees around the X axis
+        model.rotation.x = - Math.PI / 2;
         
         camera.position.z = Math.max(...Object.values(size)) * 2;
         controls.update();
