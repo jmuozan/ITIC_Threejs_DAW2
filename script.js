@@ -82,11 +82,11 @@ new OBJLoader().load('PAGE/MODELS/Helmet.OBJ',
         // Center the model
         model.position.sub(center);
         
-        // Move the model up by half its height
-        model.position.y += size.y * 1;
+        // Mou model
+        //model.position.y += size.y * 1;
         
-        // Rotate the model 90 degrees around the X axis
-        model.rotation.x = - Math.PI / 2;
+        // Rota model 90 degrees X axis
+        //model.rotation.x = - Math.PI / 2;
         
         camera.position.z = Math.max(...Object.values(size)) * 2;
         controls.update();
