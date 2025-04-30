@@ -48,7 +48,7 @@ A continuació trobaràs exemples pràctics per entendre i experimentar amb els 
 
 ### Bibliografia Recomanada
 - [Three.js (Web oficial)](https://threejs.org/)
-- [Blender (Eina de modelatge 3D)](https://www.blender.org/)
+- [Blender (Ferramenta de modelat 3D)](https://www.blender.org/)
 - [mrdoob (Creador de Three.js)](https://github.com/mrdoob)
 
 ### Bancs de Models 3D Gratuïts
