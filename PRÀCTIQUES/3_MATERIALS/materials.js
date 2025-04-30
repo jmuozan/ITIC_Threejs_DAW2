@@ -64,6 +64,20 @@ controls.enableDamping = true;
 // Posició inicial de la càmera
 camera.position.z = 5;
 
+// Add this CSS dynamically to apply the typography from index.html to the controls
+const style = document.createElement('style');
+style.textContent = `
+    #controls {
+        font-family: 'Sora', 'Lora', Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+    }
+    #controls label {
+        font-weight: 500;
+    }
+`;
+document.head.appendChild(style);
+
 // Funció per canviar el material segons el tipus seleccionat
 function updateMaterial(type) {
     switch (type) {
