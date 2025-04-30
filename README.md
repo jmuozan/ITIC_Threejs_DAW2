@@ -6,7 +6,7 @@ Three.js és una biblioteca JavaScript que facilita la creació i visualització
 ➡️ [Consulta aquí l'estructura bàsica d'un projecte Three.js](DOCUMENTACIÓ/READMES/ESTRUCTURA_BASICA_THREEJS.md)
 
 ## PRÀCTIQUES Three.js
-A continuació trobaràs exemples pràctics per entendre i experimentar amb els conceptes bàsics de Three.js. Cada pràctica inclou fitxers HTML, JS i una explicació en format MD.
+A continuació trobaràs exemples pràctics per entendre i experimentar amb els conceptes bàsics de Three.js. Cada pràctica inclou fitxers HTML, JS i una explicació.
 
 - **1. Importació de models 3D**
   - [import.html](PRÀCTIQUES/1_IMPORT/import.html)
@@ -34,7 +34,7 @@ A continuació trobaràs exemples pràctics per entendre i experimentar amb els 
 ## Recursos i Referències
 
 ### Documentació i Estructura del Projecte
-- Consulta la [Documentació del Codi Principal](DOCUMENTACIÓ/READMES/EXPLICACIÓ_CODI_MAIN.md) per entendre en detall l'estructura i el funcionament del visor 3D desenvolupat amb Three.js. Aquest visor permet visualitzar i modificar parcialment un model 3D d'un casc.
+- Consulta la [Documentació del Codi Principal](DOCUMENTACIÓ/READMES/EXPLICACIÓ_CODI_MAIN.md) per entendre en detall l'estructura i el funcionament del visor 3D desenvolupat amb Three.js. 
 
 <p align="center">
   <img src="./DOCUMENTACIÓ/IMATGES_DOCUMENTACIÓ/IMATGES_WEB/web_base.gif" alt="Visor 3D Three.js" width="100%">
