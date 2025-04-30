@@ -7,6 +7,9 @@ const container = document.getElementById('viewer-container');
 // Escena principal
 const scene = new THREE.Scene();
 
+// Canviem el fons a rosa
+scene.background = new THREE.Color(0xffc0cb);
+
 // Càmera de perspectiva
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -15,18 +18,44 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild(renderer.domElement);
 
-// Afegim un cilindre per provar diferents materials
-const geometry = new THREE.CylinderGeometry(1, 1, 2, 32);
+// Canviem la geometria a un torus
+const geometry = new THREE.TorusGeometry(1, 0.4, 16, 100);
 let material = new THREE.MeshStandardMaterial({ color: 0x0077ff, metalness: 1, roughness: 0 });
-const cylinder = new THREE.Mesh(geometry, material);
-scene.add(cylinder);
+const torus = new THREE.Mesh(geometry, material);
+scene.add(torus);
 
-// Llum ambiental i direccional per veure els materials
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+// Llum ambiental i diverses llums direccionals per veure millor els materials
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
 scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-directionalLight.position.set(5, 5, 5);
-scene.add(directionalLight);
+
+// Diverses llums direccionals des de diferents angles
+const lights = [
+    { position: [5, 5, 5], intensity: 0.7 },    // Dreta-frontal-superior
+    { position: [-5, 5, 5], intensity: 0.5 },   // Esquerra-frontal-superior
+    { position: [0, -5, 5], intensity: 0.4 },   // Frontal-inferior
+    { position: [0, 0, -5], intensity: 0.3 },   // Posterior
+    { position: [0, 10, 0], intensity: 0.3 }    // Superior
+];
+
+lights.forEach(light => {
+    const dirLight = new THREE.DirectionalLight(0xffffff, light.intensity);
+    dirLight.position.set(...light.position);
+    scene.add(dirLight);
+});
+
+// Afegim més llums per millorar la il·luminació
+const additionalLights = [
+    { position: [10, 10, 10], intensity: 0.8 },  // Dreta-superior-frontal
+    { position: [-10, 10, 10], intensity: 0.6 }, // Esquerra-superior-frontal
+    { position: [10, -10, 10], intensity: 0.5 }, // Dreta-inferior-frontal
+    { position: [-10, -10, -10], intensity: 0.4 } // Esquerra-inferior-posterior
+];
+
+additionalLights.forEach(light => {
+    const dirLight = new THREE.DirectionalLight(0xffffff, light.intensity);
+    dirLight.position.set(...light.position);
+    scene.add(dirLight);
+});
 
 // Controls d'òrbita per moure la càmera
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -48,7 +77,7 @@ function updateMaterial(type) {
             material = new THREE.MeshPhysicalMaterial({ color: 0x77aaff, metalness: 0, roughness: 0, transmission: 0.9, opacity: 0.5, transparent: true });
             break;
     }
-    cylinder.material = material;
+    torus.material = material;
 }
 
 // Escolta el canvi de material des dels radio buttons
